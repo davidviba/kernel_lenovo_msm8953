@@ -5810,11 +5810,11 @@ static ssize_t mic_gain_store(struct kobject *kobj,
 
 	sscanf(buf, "%d %d", &input_b, &input_t);
 
-	if (input_b > 110) input_b = 110;
-	if (input_b < -10) input_b = -10;
+	if (input_b > 40) input_b = 40;
+	if (input_b < -84) input_b = -84;
 	
-	if (input_t > 110) input_t = 110;
-	if (input_t < -10) input_t = -10;
+	if (input_t > 40) input_t = 40;
+	if (input_t < -84) input_t = -84;
 
 	snd_soc_write(sound_control_codec_ptr, MSM8X16_WCD_A_CDC_TX1_VOL_CTL_GAIN, input_b);
 	snd_soc_write(sound_control_codec_ptr, MSM8X16_WCD_A_CDC_TX2_VOL_CTL_GAIN, input_t);
