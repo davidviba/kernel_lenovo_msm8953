@@ -1169,18 +1169,11 @@ int ecryptfs_read_and_validate_header_region(struct inode *inode)
 
 	rc = ecryptfs_read_lower(file_size, 0, ECRYPTFS_SIZE_AND_MARKER_BYTES,
 				 inode);
-<<<<<<< HEAD
 	lower_file->f_ra.ra_pages = ra_pages_org;
 	/* restore read a head mechanism */
 
 	if (rc < ECRYPTFS_SIZE_AND_MARKER_BYTES)
 		return rc >= 0 ? -EINVAL : rc;
-=======
-	if (rc < 0)
-		return rc;
-	else if (rc < ECRYPTFS_SIZE_AND_MARKER_BYTES)
-		return -EINVAL;
->>>>>>> 1c575ded9d398bbc931a72dfeb25b97c5dd79759
 	rc = ecryptfs_validate_marker(marker);
 	if (!rc)
 		ecryptfs_i_size_init(file_size, inode);
