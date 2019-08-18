@@ -325,11 +325,19 @@ rx_submit(struct eth_dev *dev, struct usb_request *req, gfp_t gfp_flags)
 	else
 		out = NULL;
 
+<<<<<<< HEAD
 	if (!out) {
 		spin_unlock_irqrestore(&dev->lock, flags);
 		return -ENOTCONN;
 	}
 
+=======
+	if (!out)
+	{
+		spin_unlock_irqrestore(&dev->lock, flags);
+		return -ENOTCONN;
+	}
+>>>>>>> 1c575ded9d398bbc931a72dfeb25b97c5dd79759
 
 	/* Padding up to RX_EXTRA handles minor disagreements with host.
 	 * Normally we use the USB "terminate on short read" convention;
@@ -354,11 +362,14 @@ rx_submit(struct eth_dev *dev, struct usb_request *req, gfp_t gfp_flags)
 	if (dev->port_usb->is_fixed)
 		size = max_t(size_t, size, dev->port_usb->fixed_out_len);
 	spin_unlock_irqrestore(&dev->lock, flags);
+<<<<<<< HEAD
 
 	if (dev->rx_needed_headroom)
 		reserve_headroom = ALIGN(dev->rx_needed_headroom, 4);
 
 	pr_debug("%s: size: %zu + %d(hr)", __func__, size, reserve_headroom);
+=======
+>>>>>>> 1c575ded9d398bbc931a72dfeb25b97c5dd79759
 
 	skb = alloc_skb(size + reserve_headroom, gfp_flags);
 	if (skb == NULL) {
