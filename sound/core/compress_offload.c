@@ -736,8 +736,6 @@ static int snd_compr_drain(struct snd_compr_stream *stream)
 		stream->runtime->state = SNDRV_PCM_STATE_DRAINING;
 		wake_up(&stream->runtime->sleep);
 	}
-
-ret:
 	mutex_unlock(&stream->device->lock);
 	return retval;
 }
